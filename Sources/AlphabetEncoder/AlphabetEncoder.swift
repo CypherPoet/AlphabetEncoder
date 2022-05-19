@@ -1,3 +1,3 @@
-struct MyLibraryName {
+struct AlphabetEncoder {
     var text = "Hello, World!"
 }

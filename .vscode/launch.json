@@ -3,11 +3,9 @@
     {
       "type": "lldb",
       "request": "launch",
-      "name": "Test MyPackageName",
+      "name": "Test AlphabetEncoder",
       "program": "/Applications/Xcode.app/Contents/Developer/usr/bin/xctest",
-      "args": [
-        ".build/debug/MyPackageNamePackageTests.xctest"
-      ],
+      "args": [".build/debug/AlphabetEncoderPackageTests.xctest"],
       "cwd": "${workspaceFolder:swift-package-template}",
       "preLaunchTask": "swift: Build All"
     }

@@ -4,20 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "MyPackageName",
+    name: "AlphabetEncoder",
     defaultLocalization: "en",
-    platforms: [
-        .iOS(.v15),
-        .macOS(.v12),
-        .tvOS(.v15),
-        .watchOS(.v8),
-    ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "MyLibraryName",
+            name: "AlphabetEncoder",
             targets: [
-                "MyLibraryName",
+                "AlphabetEncoder",
             ]
         ),
     ],
@@ -29,10 +23,10 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "MyLibraryName",
+            name: "AlphabetEncoder",
             dependencies: [
             ],
-            path: "Sources/MyLibraryName/",
+            path: "Sources/AlphabetEncoder/",
             exclude: [
                 "Resources/README.md",
             ],
@@ -41,11 +35,11 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "MyLibraryNameTests",
+            name: "AlphabetEncoderTests",
             dependencies: [
-                "MyLibraryName",
+                "AlphabetEncoder",
             ],
-            path: "Tests/MyLibraryName/",
+            path: "Tests/AlphabetEncoder/",
             exclude: [
                 "Resources/README.md",
                 "Toolbox/README.md",

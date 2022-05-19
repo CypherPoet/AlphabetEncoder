@@ -1,4 +1,4 @@
-# MyLibraryName
+# AlphabetEncoder
 
 <!-- Header Logo -->
 
@@ -16,7 +16,7 @@
     <img src="https://img.shields.io/badge/tvOS-15.0+-41465B.svg" />
     <img src="https://img.shields.io/badge/watchOS-8.0+-1FD67A.svg" />
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
-    <img src="https://github.com/CypherPoet/MyLibraryName/workflows/Build%20&%20Test/badge.svg" />
+    <img src="https://github.com/CypherPoet/AlphabetEncoder/workflows/Build%20&%20Test/badge.svg" />
     <a href="https://github.com/apple/swift-package-manager">
       <img src="https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat" />
     </a>
@@ -25,29 +25,25 @@
     </a>
 </p>
 
-<p align="center">
-
-_[ A brief synopsis of this library ]._
-
-<p />
+<p align="center">A library to encode and decode integers from base alphabets of characters.<p />
 
 ## Installation
 
 ### Xcode Projects
 
-Select `File` -> `Swift Packages` -> `Add Package Dependency` and enter `https://github.com/CypherPoet/MyLibraryName`.
+Select `File` -> `Swift Packages` -> `Add Package Dependency` and enter `https://github.com/CypherPoet/AlphabetEncoder`.
 
 ### Swift Package Manager Projects
 
-You can add `MyPackageName` as a package dependency in your `Package.swift` file:
+You can add `AlphabetEncoder` as a package dependency in your `Package.swift` file:
 
 ```swift
 let package = Package(
     //...
     dependencies: [
         .package(
-            name: "MyPackageName",
-            url: "https://github.com/CypherPoet/MyLibraryName",
+            name: "AlphabetEncoder",
+            url: "https://github.com/CypherPoet/AlphabetEncoder",
             .exact("0.0.1")
         ),
     ],
@@ -57,16 +53,14 @@ let package = Package(
 
 <!-- 🔑 UNCOMMENT THE INSTRUCTIONS BELOW IF THE GITHUB REPO NAME MATCHES THE PACKAGE NAME 👇 -->
 
-<!--
-
-From there, refer to `MyLibraryName` as a "target dependency" in any of _your_ package's targets that need it.
+From there, refer to `AlphabetEncoder` as a "target dependency" in any of _your_ package's targets that need it.
 
 ```swift
 targets: [
     .target(
         name: "YourLibrary",
         dependencies: [
-          "MyLibraryName",
+          "AlphabetEncoder",
         ],
         ...
     ),
@@ -74,52 +68,15 @@ targets: [
 ]
 ```
 
--->
+Then simply `import AlphabetEncoder` wherever you’d like to use it.
 
-<!-- 🔑 UNCOMMENT THE INSTRUCTIONS BELOW IF THE GITHUB REPO NAME DOESN'T MATCH THE PACKAGE NAME 👇 -->
+## 🗺 Road Map
 
-From there, refer to the `MyLibraryName` "product" delivered by the `MyPackageName` "package" inside of any of your project's target dependencies:
-
-```swift
-targets: [
-    .target(
-        name: "YourLibrary",
-        dependencies: [
-            .product(
-                name: "MyLibraryName",
-                package: "MyPackageName"
-            ),
-        ],
-        ...
-    ),
-    ...
-]
-```
-
-<!-- Proceed from above choice accordingly (and delete this comment) -->
-
-Then simply `import MyLibraryName` wherever you’d like to use it.
-
-<!--
-    🔑 UNCOMMENT THE INSTRUCTIONS BELOW IF USING THE `@_exported` feature
-    might be handy. 👇
--->
-
-<!-- **📝 Note:** To make the library available to your entire project, you could also leverage the [functionality of the `@_exported` keyword](https://forums.swift.org/t/package-manager-exported-dependencies/11615) by placing the following line somewhere at the top level of your project:
-
-```swift
-@_exported import MyLibraryName
-``` -->
-
-## Usage
-
-## 🗺 Roadmap
-
-- World Domination
+- Potentially add more base alphabets.
 
 ## Contributing
 
-Contributions to `MyPackageName` are most welcome. Check out some of the [issue templates](./.github/ISSUE_TEMPLATE/) for more info.
+Contributions to `AlphabetEncoder` are most welcome. Check out some of the [issue templates](./.github/ISSUE_TEMPLATE/) for more info.
 
 ## 💻 Developing
 
@@ -135,13 +92,4 @@ For now, the best way to view the docs is to open the project in Xcode and run t
 
 ## 🏷 License
 
-`MyPackageName` is available under the MIT license. See the [LICENSE file](./LICENSE) for more info.
-
-## Steps For Using This Template
-
-- [ ] Rename instances of `MyLibraryName` to the library's product name.
-- [ ] Rename files and directories with names of `MyLibraryName` to the library's product name.
-- [ ] Rename instances of `MyPackageName` to the library's Swift package name.
-- [ ] Update supported platforms in `Package.swift` and in this README's badges as appropriate.
-- [ ] Replaces instances of `[ A brief synopsis of this library ]` with the library's short description.
-- [ ] Delete this section.
+`AlphabetEncoder` is available under the MIT license. See the [LICENSE file](./LICENSE) for more info.
