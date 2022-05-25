@@ -80,7 +80,7 @@ extension AlphabetCoderTests {
         
         let input = AlphabetCoder.EncodingInput(2)
         let expected = String(customAlphabet[Int(input)])
-        let actual = try sut.encode(input)
+        let actual = sut.encode(input)
         
         XCTAssertEqual(actual, expected)
     }
@@ -91,7 +91,7 @@ extension AlphabetCoderTests {
         
         let input = AlphabetCoder.EncodingInput(0)
         let expected = String(try XCTUnwrap(customAlphabet.first))
-        let actual = try sut.encode(input)
+        let actual = sut.encode(input)
         
         XCTAssertEqual(actual, expected)
     }
@@ -104,7 +104,7 @@ extension AlphabetCoderTests {
         
         measure {
             for integer in testIntegers {
-                let _ = try! sut.encode(integer)
+                let _ = sut.encode(integer)
             }
         }
     }
@@ -127,7 +127,7 @@ extension AlphabetCoderTests {
             for expectedOutput in (1...20).map({ _ in
                 AlphabetCoder.EncodingInput.random(in: 0...100_000)
             }) {
-                let input = try sut.encode(expectedOutput)
+                let input = sut.encode(expectedOutput)
                 let actual = try sut.decode(input)
 
                 XCTAssertEqual(actual, expectedOutput)
@@ -173,7 +173,7 @@ extension AlphabetCoderTests {
     func test_Decoding_WhenStringIsTooLong_ItThrowsAnErrorForInputBeingTooLong() async throws {
         sut = makeSUT()
         
-        let input = try sut.encode(SystemUnderTest.EncodingInput.max) + "0"
+        let input = sut.encode(SystemUnderTest.EncodingInput.max) + "0"
         let expectedError = SystemUnderTest.Error.decodedInputStringIsTooLong
         
         do {

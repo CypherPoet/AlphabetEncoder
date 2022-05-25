@@ -24,7 +24,7 @@ public struct AlphabetCoder {
     /// Passing a string that's too long will encode to a value that overflows
     /// the `.max` for the ``EncodingInput``.
     public var maxDecodingStringLength: Int {
-        try! encode(EncodingInput.max).count
+        encode(EncodingInput.max).count
     }
     
     
@@ -36,14 +36,14 @@ public struct AlphabetCoder {
     }
     
     
-    public func encode(_ integer: EncodingInput) throws -> EncodingOutput {
+    public func encode(_ integer: EncodingInput) -> EncodingOutput {
         // base case
         if integer < base {
             return String(alphabet[Int(integer)])
         }
         
         // recursion
-        let firstPart = try encode(integer / base)
+        let firstPart = encode(integer / base)
         let alphabetIndex = Int(integer % base)
         let secondPart = String(alphabet[alphabetIndex])
         
