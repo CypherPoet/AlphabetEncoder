@@ -3,39 +3,49 @@ import Foundation
 
 public struct AlphabetCoder {
     public typealias Alphabet = [Character]
+    public typealias EncodingInput = UInt64
+    public typealias EncodingOutput = String
+    public typealias DecodingInput = EncodingOutput
+    public typealias DecodingOutput = EncodingInput
     
     
-    public private(set) var base: Int
+    public private(set) var base: UInt64
     
     
-    public var alphabet: [Character] {
+    public var alphabet: Alphabet {
         didSet {
-            self.base = alphabet.count
+            self.base = UInt64(alphabet.count)
         }
+    }
+    
+    
+    /// The maximum length of a string that can be used for decoding.
+    ///
+    /// Passing a string that's too long will encode to a value that overflows
+    /// the `.max` for the ``EncodingInput``.
+    public var maxDecodingStringLength: Int {
+        try! encode(EncodingInput.max).count - 1
     }
     
     
     public init(
-        alphabet: [Character] = Alphabets.base62
+        alphabet: Alphabet
     ) {
         self.alphabet = alphabet
-        self.base = alphabet.count
+        self.base = UInt64(alphabet.count)
     }
     
     
-    public func encode(integer: Int) throws -> String {
-        guard integer >= 0 else {
-            throw Error.negativeIntegerArgument
-        }
-        
+    public func encode(_ integer: EncodingInput) throws -> EncodingOutput {
         // base case
         if integer < base {
-            return String(alphabet[integer])
+            return String(alphabet[Int(integer)])
         }
         
         // recursion
-        let firstPart = try encode(integer: integer / base)
-        let secondPart = String(alphabet[integer % base])
+        let firstPart = try encode(integer / base)
+        let alphabetIndex = Int(integer % base)
+        let secondPart = String(alphabet[alphabetIndex])
         
         return "\(firstPart)\(secondPart)"
     }
@@ -45,24 +55,34 @@ public struct AlphabetCoder {
 // MARK: - Decoding
 extension AlphabetCoder {
     
-    public func decode(string: String) throws -> Int {
-        string
+    public func decode(_ string: DecodingInput) throws -> DecodingOutput {
+        guard string.isEmpty == false else {
+            throw Error.cannotDecodeEmptyString
+        }
+        
+        guard string.count <= maxDecodingStringLength else {
+            throw Error.decodedInputStringIsTooLong
+        }
+        
+        return try string
             .reversed()
             .enumerated()
-            .reduce(0) { accumulatedValue, enumerationInfo in
+            .reduce(DecodingOutput(0)) { accumulatedValue, enumerationInfo in
                 let (characterPosition, currentCharacter) = enumerationInfo
                 
-                guard let alphabetIndex = alphabet.firstIndex(of: currentCharacter) else {
-                    return accumulatedValue
+                guard let alphabetIndex = alphabet
+                    .firstIndex(of: currentCharacter)
+                else {
+                    throw Error.unknownCharacterInDecodeInput
                 }
                 
-                let indexScale = Int(
+                let alphabetIndexScale = DecodingOutput(
                     pow(Double(base), Double(characterPosition))
                 )
                 
-                let nextValue = alphabetIndex * indexScale
+                let incrementationAmount = alphabetIndexScale * DecodingOutput(alphabetIndex)
                 
-                return accumulatedValue + nextValue
+                return accumulatedValue + incrementationAmount
             }
     }
     
@@ -72,6 +92,8 @@ extension AlphabetCoder {
 extension AlphabetCoder {
     
     public enum Error: Swift.Error {
-        case negativeIntegerArgument
+        case unknownCharacterInDecodeInput
+        case cannotDecodeEmptyString
+        case decodedInputStringIsTooLong
     }
 }

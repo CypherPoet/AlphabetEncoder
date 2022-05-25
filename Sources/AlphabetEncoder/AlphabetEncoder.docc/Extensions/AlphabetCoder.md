@@ -5,10 +5,32 @@ Encodes an integer to a string, and decodes a string to an integer.
 
 ## Overview
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
+Use this struct for encoding an integer to a string, and decoding a string to an integer. 
+
+
+
+```swift
+let alphabetCoder = AlphabetCoder(alphabet: .base62)
+
+let number = 21_000_000
+
+print(alphabetCoder.encode(number))     // "1Q73g"
+```
+
+
+```swift
+let alphabetCoder = AlphabetCoder(alphabet: .base62)
+
+let name = "CypherPoet"
+
+print(alphabetCoder.decode(name))     // 175727527079915127
+```
+
+
 
 ## Topics
 
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
+### Setup
 
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
+- ``AlphabetCoder/init(alphabet:)``
+
