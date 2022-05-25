@@ -45,7 +45,7 @@ let package = Package(
         .package(
             name: "AlphabetEncoder",
             url: "https://github.com/CypherPoet/AlphabetEncoder",
-            .upToNextMinor(from: "0.1.0")
+            .upToNextMinor(from: "0.2.0")
         ),
     ],
     //...
