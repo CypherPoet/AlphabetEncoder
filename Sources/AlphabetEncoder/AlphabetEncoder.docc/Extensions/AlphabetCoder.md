@@ -10,7 +10,10 @@ Use this struct for encoding an integer to a string, and decoding a string to an
 
 
 ```swift
-let alphabetCoder = AlphabetCoder(alphabet: .base62)
+
+import AlphabetEncoder
+
+let alphabetCoder = AlphabetCoder(alphabet: Alphabets.base62)
 
 let number = 21_000_000
 
@@ -19,7 +22,9 @@ print(alphabetCoder.encode(number))     // "1Q73g"
 
 
 ```swift
-let alphabetCoder = AlphabetCoder(alphabet: .base62)
+import AlphabetEncoder
+
+let alphabetCoder = AlphabetCoder(alphabet: Alphabets.base62)
 
 let name = "CypherPoet"
 
@@ -34,3 +39,7 @@ print(alphabetCoder.decode(name))     // 175727527079915127
 
 - ``AlphabetCoder/init(alphabet:)``
 
+
+### Using Built-in Alphabets
+
+- ``AlphabetCoder/Alphabet-swift.typealias``
