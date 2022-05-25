@@ -24,7 +24,7 @@ public struct AlphabetCoder {
     /// Passing a string that's too long will encode to a value that overflows
     /// the `.max` for the ``EncodingInput``.
     public var maxDecodingStringLength: Int {
-        try! encode(EncodingInput.max).count - 1
+        try! encode(EncodingInput.max).count
     }
     
     
@@ -63,7 +63,7 @@ extension AlphabetCoder {
         guard string.count <= maxDecodingStringLength else {
             throw Error.decodedInputStringIsTooLong
         }
-        
+
         return try string
             .reversed()
             .enumerated()
