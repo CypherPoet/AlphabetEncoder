@@ -45,8 +45,8 @@ let package = Package(
             ],
             path: "Tests/AlphabetEncoder/",
             exclude: [
-                "Resources/README.txt",
-                "Toolbox/README.txt",
+                "Resources/README.md",
+                "Toolbox/README.md",
             ],
             resources: [
                 .process("Resources"),
