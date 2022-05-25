@@ -6,7 +6,9 @@
       "name": "Test AlphabetEncoder",
       "program": "/Applications/Xcode.app/Contents/Developer/usr/bin/xctest",
       "args": [".build/debug/AlphabetEncoderPackageTests.xctest"],
-      "cwd": "${workspaceFolder:swift-package-template}",
+      "cwd": "${workspaceFolder:AlphabetEncoder}",
+
+      // https://github.com/swift-server/vscode-swift#automatic-task-creation
       "preLaunchTask": "swift: Build All"
     }
   ]
