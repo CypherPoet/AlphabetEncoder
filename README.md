@@ -45,7 +45,7 @@ let package = Package(
         .package(
             name: "AlphabetEncoder",
             url: "https://github.com/CypherPoet/AlphabetEncoder",
-            .exact("0.0.1")
+            .exact("0.1.0")
         ),
     ],
     //...
